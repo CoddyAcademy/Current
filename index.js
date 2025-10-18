@@ -6,6 +6,16 @@ const channel = "@intention_academy"
 const bot = new TelegramBot(TelegramToken, { polling: true })
 const API_URL = "https://cbu.uz/oz/arkhiv-kursov-valyut/json/"
 const userLegacy = {}
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('✅ Bot is running and healthy!');
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
 
