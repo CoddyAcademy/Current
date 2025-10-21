@@ -118,9 +118,14 @@ async function sendCurrency(chatId, currencyCode) {
 
 async function checkSubscription(chatId) {
   try {
-    const member = await bot.getChatMember(channel, chatId);
-    return ["member", "administrator", "creator"].includes(member.status);
+    for (const ch of channel) {
+      const member = await bot.getChatMember(ch, chatId);
+      const isMember = ["member", "administrator", "creator"].includes(member.status);
+      if (!isMember) return false; // Agar bittasiga ham obuna bo‘lmasa — false
+    }
+    return true; // Ikkalasiga ham obuna bo‘lgan
   } catch (error) {
+    console.error("Subscription check error:", error.message);
     return false;
   }
 }
