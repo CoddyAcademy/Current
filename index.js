@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 
 const TelegramToken = process.env.BOT_TOKEN || "8222215060:AAF64Nzxt1HMqbB2a5EikFnLAtBso7yG9nU";
-const channel = "@intention_academy";
+const channel = ["@intention_academy", "@brown_blog"];
 const bot = new TelegramBot(TelegramToken, { polling: true });
 const API_URL = "https://cbu.uz/oz/arkhiv-kursov-valyut/json/";
 const userLegacy = {};
@@ -65,6 +65,7 @@ function askToJoin(chatId) {
     reply_markup: {
       inline_keyboard: [
         [{ text: "🔗 Kanalga o'tish", url: "https://t.me/intention_academy" }],
+        [{ text: "🔗 Kanalga o'tish", url: "https://t.me/brown_blog" }],
         [{ text: "✅ Obunani tekshirish", callback_data: "check_sub" }],
       ],
     },
